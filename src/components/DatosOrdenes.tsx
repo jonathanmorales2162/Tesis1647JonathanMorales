@@ -2,10 +2,10 @@ import React from 'react';
 
 interface Order {
   idOs: number;
-  dataCriacao: string; // Suponiendo que tienes una fecha de creación
+  dataInicial: string; // Suponiendo que tienes una fecha de creación
   status: string;
-  tipo: string; // Suponiendo que tienes un campo tipo
-  dataAtualizacao: string; // Suponiendo que tienes una fecha de actualización
+  descricaoProduto: string; 
+  dataAtualizacao: string; 
 }
 
 interface DatosOrdenesProps {
@@ -29,10 +29,7 @@ const DatosOrdenes: React.FC<DatosOrdenesProps> = ({ ordersdata }) => {
                 Estatus
               </th>
               <th className="py-4 px-4 font-medium text-black dark:text-white">
-                Tipo
-              </th>
-              <th className="py-4 px-4 font-medium text-black dark:text-white">
-                Fecha Actualización
+                Descrici+on de producto
               </th>
               <th className="py-4 px-4 font-medium text-black dark:text-white">
                 Actions
@@ -49,7 +46,7 @@ const DatosOrdenes: React.FC<DatosOrdenesProps> = ({ ordersdata }) => {
                     </h5>
                   </td>
                   <td className="border-b border-[#eee] py-5 px-4 dark:border-strokedark">
-                    <p className="text-black dark:text-white">{order.dataCriacao}</p>
+                    <p className="text-black dark:text-white">{order.dataInicial}</p>
                   </td>
                   <td className="border-b border-[#eee] py-5 px-4 dark:border-strokedark">
                     <p className="inline-flex rounded-full bg-success bg-opacity-10 py-1 px-3 text-sm font-medium text-success">
@@ -57,10 +54,7 @@ const DatosOrdenes: React.FC<DatosOrdenesProps> = ({ ordersdata }) => {
                     </p>
                   </td>
                   <td className="border-b border-[#eee] py-5 px-4 dark:border-strokedark">
-                    <p className="text-black dark:text-white">{order.tipo}</p>
-                  </td>
-                  <td className="border-b border-[#eee] py-5 px-4 dark:border-strokedark">
-                    <p className="text-black dark:text-white">{order.dataAtualizacao}</p>
+                    <p className="text-black dark:text-white">{order.descricaoProduto}</p>
                   </td>
                   <td className="border-b border-[#eee] py-5 px-4 dark:border-strokedark">
                     <div className="flex items-center space-x-3.5">

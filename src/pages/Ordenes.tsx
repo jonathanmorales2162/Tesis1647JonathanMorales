@@ -20,10 +20,11 @@ const Ordenes: React.FC = () => {
     const fetchOrders = async () => {
       setLoading(true);  // Iniciar el estado de carga
       setError('');  // Limpiar cualquier error previo
-      //const token = localStorage.getItem('jwt');  // Recuperar el token JWT desde el localStorage
-      //const clientId = localStorage.getItem('id');  // Recuperar el id cliente del localStorage
-      const clientId = 33;
-      const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MzMsImVtYWlsIjoiZGF2aWQubW9udGVycm9zb0BhZG1pbi5jb20iLCJyb2wiOiJjbGllbnRlIiwiaWF0IjoxNzI0NTM3MDY5LCJleHAiOjE3MjQ1NDA2Njl9.njoayEGuBCnF8ft8CT-UiMh-GCdbaIGgk4bPGE4GJz0';
+      const token = localStorage.getItem('jwt');  // Recuperar el token JWT desde el localStorage
+      const clientId = localStorage.getItem('clientId');  // Recuperar el id cliente del localStorage
+      //const clientId = 33;
+      //const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MzMsImVtYWlsIjoiZGF2aWQubW9udGVycm9zb0BhZG1pbi5jb20iLCJyb2wiOiJjbGllbnRlIiwiaWF0IjoxNzI0NTM3MDY5LCJleHAiOjE3MjQ1NDA2Njl9.njoayEGuBCnF8ft8CT-UiMh-GCdbaIGgk4bPGE4GJz0';
+      console.log(clientId);
       try {
         const response = await fetch(`http://api.taller.digicom.com.gt/api/v1/clientes/os/${clientId}`, {
           headers: {
@@ -54,8 +55,8 @@ const Ordenes: React.FC = () => {
     <div className="flex flex-col gap-3">
         <DatosOrdenes ordersdata ={orders} />
     
-        <TableThree />
     </div>
+    // <TableThree />
     //<TableThree />
     // <div className="container mt-3 p-3 bg-dark text-light">
     //   <h1>Órdenes de Servicio</h1>
