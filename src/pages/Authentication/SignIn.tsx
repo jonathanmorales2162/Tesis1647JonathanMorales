@@ -18,7 +18,7 @@ const SignIn = () => {
     };
 
     try {
-      const response = await fetch('http://api.taller.digicom.com.gt/api/v1/clientes/login', {
+      const response = await fetch('https://api.taller.digicom.com.gt/api/v1/clientes/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -38,6 +38,7 @@ const SignIn = () => {
       localStorage.setItem('clientEmail', data.cliente.email);
       localStorage.setItem('clientRole', data.cliente.rol);
 
+      
       navigate('/ordenes');  // Redirigir al usuario a la página de órdenes o dashboard
 
     } catch (error: any) {

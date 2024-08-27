@@ -26,7 +26,7 @@ const Ordenes: React.FC = () => {
       //const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MzMsImVtYWlsIjoiZGF2aWQubW9udGVycm9zb0BhZG1pbi5jb20iLCJyb2wiOiJjbGllbnRlIiwiaWF0IjoxNzI0NTM3MDY5LCJleHAiOjE3MjQ1NDA2Njl9.njoayEGuBCnF8ft8CT-UiMh-GCdbaIGgk4bPGE4GJz0';
       console.log(clientId);
       try {
-        const response = await fetch(`http://api.taller.digicom.com.gt/api/v1/clientes/os/${clientId}`, {
+        const response = await fetch(`https://api.taller.digicom.com.gt/api/v1/clientes/os/${clientId}`, {
           headers: {
             'Authorization': `Bearer ${token}`
           }
@@ -56,29 +56,7 @@ const Ordenes: React.FC = () => {
         <DatosOrdenes ordersdata ={orders} />
     
     </div>
-    // <TableThree />
     //<TableThree />
-    // <div className="container mt-3 p-3 bg-dark text-light">
-    //   <h1>Órdenes de Servicio</h1>
-    //   {error && <div className="alert alert-danger">{error}</div>}
-    //   {loading && <p className="text-white">Cargando...</p>}
-    //   {orders.length > 0 ? (
-    //     orders.map(order => (
-    //       <div key={order.idOs} className="card text-light bg-secondary mb-3">
-    //         <div className="card-header">Orden #{order.idOs}</div>
-    //         <div className="card-body">
-    //           <h5 className="card-title">Estatus: {order.status}</h5>
-    //           <p className="card-text">
-    //             Descripción: <span dangerouslySetInnerHTML={{ __html: order.descricaoProduto }}></span>
-    //           </p>
-    //           <Link to={`/orders/${order.idOs}`} className="btn btn-primary">Ver Detalles</Link>
-    //         </div>
-    //       </div>
-    //     ))
-    //   ) : (
-    //     !loading && <p className="text-white">No hay órdenes disponibles.</p>
-    //   )}
-    // </div>
   );
 };
 
