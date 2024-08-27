@@ -1,10 +1,8 @@
 import { Suspense, lazy, useEffect, useState } from 'react';
-import { Route, Routes, Navigate  } from 'react-router-dom';
+import { Route, Routes, Navigate } from 'react-router-dom';
 import { Toaster } from 'react-hot-toast';
 
-import ECommerce from './pages/Dashboard/ECommerce';
 import SignIn from './pages/Authentication/SignIn';
-import SignUp from './pages/Authentication/SignUp';
 import Loader from './common/Loader';
 import routes from './routes';
 
@@ -21,12 +19,15 @@ function App() {
     const token = localStorage.getItem('jwt');
     if (token) {
       setIsAuthenticated(true);
+    } else {
+      setIsAuthenticated(false);
     }
   }, []);
 
   if (loading) {
     return <Loader />;
   }
+
   return (
     <>
       <Toaster
@@ -36,12 +37,11 @@ function App() {
       />
       <Routes>
         <Route path="/auth/signin" element={<SignIn />} />
-        <Route path="/auth/signup" element={<SignUp />} />
 
         <Route element={<DefaultLayout />}>
           {isAuthenticated ? (
             <>
-              <Route index element={<ECommerce />} />
+              {/* Redirigir a ECommerce si está autenticado */}
               {routes.map((route, index) => {
                 const { path, component: Component } = route;
                 return (
@@ -56,10 +56,14 @@ function App() {
                   />
                 );
               })}
+              {/* Por defecto, si está autenticado, redirige al Dashboard */}
+              <Route path="*" element={<Navigate to="/dashboard" replace />} />
             </>
           ) : (
             // Si no está autenticado, redirigir a SignIn
-            <Route path="*" element={<Navigate to="/auth/signin" replace />} />
+            <>
+              <Route path="*" element={<Navigate to="/auth/signin" replace />} />
+            </>
           )}
         </Route>
       </Routes>

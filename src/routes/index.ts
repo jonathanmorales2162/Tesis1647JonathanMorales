@@ -10,12 +10,13 @@ const Tables = lazy(() => import('../pages/Tables'));
 const Alerts = lazy(() => import('../pages/UiElements/Alerts'));
 const Buttons = lazy(() => import('../pages/UiElements/Buttons'));
 // Mis cambios
-//import SignIn from './pages/Authentication/SignIn';
 const SignIn = lazy(() => import('../pages/Authentication/SignIn'));
-const SignUp = lazy(() => import('../pages/Authentication/SignIn'));
-//import SignUp from './pages/Authentication/SignUp';
+
 const Perfil = lazy(() => import('../pages/Perfil'));
 const Ordenes = lazy(() => import ('../pages/Ordenes'));
+// serviceWorker 
+
+
 
 const coreRoutes = [
   {
@@ -27,6 +28,11 @@ const coreRoutes = [
     path: '/profile',
     title: 'Profile',
     component: Profile,
+  },
+  {
+    path: '/auth/signin',
+    title: 'Login',
+    component: SignIn,
   },
   {
     path: '/perfil',
