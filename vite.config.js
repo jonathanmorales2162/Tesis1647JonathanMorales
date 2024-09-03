@@ -10,9 +10,9 @@ export default defineConfig({
       registerType: 'autoUpdate',
       includeAssets: ['favicon.ico', 'apple-touch-icon.png', 'masked-icon.svg'],
       manifest: {
-        name: 'TailAdmin React',
-        short_name: 'TailAdmin',
-        description: 'TailAdmin React Application',
+        name: 'DIGICOM',
+        short_name: 'DIGICOM',
+        description: 'DIGICOM React Application',
         theme_color: '#ffffff',
         icons: [
           {

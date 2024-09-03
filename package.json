@@ -1,5 +1,5 @@
 {
-  "name": "tailadmin-react-free",
+  "name": "ordenes-digicom",
   "private": true,
   "version": "1.0.5",
   "type": "module",
@@ -7,12 +7,11 @@
     "dev": "vite",
     "build": "vite build && vite build --mode ssr && npm run generate:pwa",
     "preview": "vite preview",
-    "generate:pwa": "vite-pwa-asset-generator --preset minimal public/logo.svg"
+    "generate:pwa": "pwa-asset-generator --preset minimal public/logo.svg"
   },
   "author": {
-    "name": "TailAdmin",
-    "email": "hello@tailadmin.com",
-    "url": "https://tailadmin.com"
+    "name": "Jonathan-Daniel-Morales-Cordero",
+    "email": "jonamorales2162@gmail.com"
   },
   "dependencies": {
     "@fortawesome/free-solid-svg-icons": "^6.6.0",
@@ -40,6 +39,7 @@
     "postcss": "^8.4.27",
     "prettier": "^3.0.0",
     "prettier-plugin-tailwindcss": "^0.4.1",
+    "pwa-asset-generator": "^6.3.2",
     "tailwindcss": "^3.3.3",
     "vite": "^4.4.7",
     "vite-plugin-pwa": "^0.20.3",
