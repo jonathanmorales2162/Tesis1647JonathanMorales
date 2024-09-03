@@ -36,12 +36,12 @@ function App() {
         containerClassName="overflow-auto"
       />
       <Routes>
-        <Route path="/auth/signin" element={<SignIn />} />
+        <Route path="/login" element={<SignIn />} />
 
         <Route element={<DefaultLayout />}>
           {isAuthenticated ? (
             <>
-              {/* Redirigir a ECommerce si está autenticado */}
+
               {routes.map((route, index) => {
                 const { path, component: Component } = route;
                 return (
@@ -56,13 +56,12 @@ function App() {
                   />
                 );
               })}
-              {/* Por defecto, si está autenticado, redirige al Dashboard */}
-              <Route path="*" element={<Navigate to="/dashboard" replace />} />
+              
             </>
           ) : (
             // Si no está autenticado, redirigir a SignIn
             <>
-              <Route path="*" element={<Navigate to="/auth/signin" replace />} />
+              <Route path="*" element={<Navigate to="/login" replace />} />
             </>
           )}
         </Route>

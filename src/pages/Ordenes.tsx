@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import TableThree from '../components/TableThree';
 import DatosOrdenes from '../components/DatosOrdenes';
 import { useNavigate } from 'react-router-dom'; // Importar useNavigate
-import { handleApiError } from './Authentication/handleApiError'; // Ajusta la ruta según donde esté ubicada tu función
+
 
 interface Order {
   idOs: number;
@@ -42,7 +42,7 @@ const Ordenes: React.FC = () => {
         setOrders(data.result);  // Guardar la respuesta de la API en el estado orders
 
       } catch (error: any) {
-        handleApiError(error, navigate);  // Manejar el error utilizando la función handleApiError
+       
         setError(error.message);  // Guardar cualquier error en el estado error
       } finally {
         setLoading(false);  // Terminar el estado de carga

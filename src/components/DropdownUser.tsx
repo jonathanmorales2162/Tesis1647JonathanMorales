@@ -47,7 +47,7 @@ const DropdownUser = () => {
     localStorage.removeItem('clientRole');
 
     // Redirige al componente de Login
-    navigate('/auth/signin');
+    navigate('/login');
   };
 
   return (

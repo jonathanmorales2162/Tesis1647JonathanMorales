@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import LogoDark from '../../images/logo/logo-dark.svg';
 import Logo from '../../images/logo/logo.svg';
-import { handleApiError } from './handleApiError';  // Función de manejo de error de la API
+
 
 const SignIn = () => {
   const [email, setEmail] = useState('');
@@ -39,11 +39,10 @@ const SignIn = () => {
       localStorage.setItem('clientEmail', data.cliente.email);
       localStorage.setItem('clientRole', data.cliente.rol);
 
-      
-      navigate('/ordenes');  // Redirigir al usuario a la página de órdenes o dashboard
+      window.location.href = '/ordenes';
+      //navigate('/ordenes');  // Redirigir al usuario a la página de órdenes o dashboard
 
     } catch (error: any) {
-      handleApiError(error, navigate);  // Usa la función para manejar el error 401
       setError(error.message);
     }
   };

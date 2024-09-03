@@ -30,7 +30,7 @@ const coreRoutes = [
     component: Profile,
   },
   {
-    path: '/auth/signin',
+    path: '/login',
     title: 'Login',
     component: SignIn,
   },
