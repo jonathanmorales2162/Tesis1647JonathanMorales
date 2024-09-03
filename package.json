@@ -5,9 +5,9 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build && vite build --mode ssr && npm run generate:pwa",
+    "build": "vite build && vite build --mode ssr",
     "preview": "vite preview",
-    "generate:pwa": "PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true pwa-asset-generator --preset minimal public/logo.svg"
+    "generate:pwa": "pwa-asset-generator --preset minimal public/logo.svg"
   },
   "author": {
     "name": "Jonathan-Daniel-Morales-Cordero",
