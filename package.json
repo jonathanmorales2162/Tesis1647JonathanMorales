@@ -5,8 +5,9 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
-    "preview": "vite preview"
+    "build": "vite build && vite build --mode ssr && npm run generate:pwa",
+    "preview": "vite preview",
+    "generate:pwa": "vite-pwa-asset-generator --preset minimal public/logo.svg"
   },
   "author": {
     "name": "TailAdmin",
@@ -41,6 +42,7 @@
     "prettier-plugin-tailwindcss": "^0.4.1",
     "tailwindcss": "^3.3.3",
     "vite": "^4.4.7",
+    "vite-plugin-pwa": "^0.20.3",
     "webpack": "^5.88.2",
     "workbox-webpack-plugin": "^7.1.0"
   }
