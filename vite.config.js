@@ -7,7 +7,7 @@ export default defineConfig({
     react(),
     VitePWA({
       registerType: 'autoUpdate',
-      includeAssets: ['favicon.ico', 'logo.svg'],
+      includeAssets: ['logo.ico', 'logo.svg'],
       manifest: {
         name: 'DIGICOM',
         short_name: 'DIGICOM',
@@ -19,7 +19,7 @@ export default defineConfig({
         display: 'standalone',
         icons: [
           {
-            src: 'favicon.ico',
+            src: 'logo.ico',
             sizes: '64x64 32x32 24x24 16x16',
             type: 'image/x-icon'
           },
