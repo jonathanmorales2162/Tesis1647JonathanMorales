@@ -38,10 +38,21 @@ function App() {
       <Routes>
         <Route path="/login" element={<SignIn />} />
 
+        {/* Add a root path redirect */}
+        <Route
+          path="/"
+          element={
+            isAuthenticated ? (
+              <Navigate to="/ordenes" replace />
+            ) : (
+              <Navigate to="/login" replace />
+            )
+          }
+        />
+
         <Route element={<DefaultLayout />}>
           {isAuthenticated ? (
             <>
-
               {routes.map((route, index) => {
                 const { path, component: Component } = route;
                 return (
@@ -56,13 +67,10 @@ function App() {
                   />
                 );
               })}
-              
             </>
           ) : (
             // Si no está autenticado, redirigir a SignIn
-            <>
-              <Route path="*" element={<Navigate to="/login" replace />} />
-            </>
+            <Route path="*" element={<Navigate to="/login" replace />} />
           )}
         </Route>
       </Routes>
