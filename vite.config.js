@@ -7,7 +7,7 @@ export default defineConfig({
     react(),
     VitePWA({
       registerType: 'autoUpdate',
-      includeAssets: ['logo.ico', 'logo.svg'],
+      includeAssets: ['favicon2.ico', 'logo192.png', 'logo512.png', 'maskable_icon.png'],
       manifest: {
         name: 'DIGICOM',
         short_name: 'DIGICOM',
@@ -17,17 +17,42 @@ export default defineConfig({
         start_url: '/',
         scope: '/',
         display: 'standalone',
+        orientation: 'any',
         icons: [
           {
-            src: 'logo.ico',
+            src: 'favicon2.ico',
             sizes: '64x64 32x32 24x24 16x16',
             type: 'image/x-icon'
           },
           {
-            src: 'logo.svg',
-            sizes: '192x192 512x512',
-            type: 'image/svg+xml',
-            purpose: 'any maskable'
+            src: 'logo192.png',
+            type: 'image/png',
+            sizes: '192x192',
+            purpose: 'any'
+          },
+          {
+            src: 'logo512.png',
+            type: 'image/png',
+            sizes: '512x512',
+            purpose: 'any'
+          },
+          {
+            src: 'maskable_icon.png',
+            type: 'image/png',
+            sizes: '192x192',
+            purpose: 'maskable'
+          }
+        ],
+        screenshots: [
+          {
+            src: 'screenshot1.png',
+            type: 'image/png',
+            sizes: '540x720'
+          },
+          {
+            src: 'screenshot2.png',
+            type: 'image/png',
+            sizes: '540x720'
           }
         ]
       },
