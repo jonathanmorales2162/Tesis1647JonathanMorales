@@ -1,67 +1,21 @@
 import Breadcrumb from '../components/Breadcrumb';
-import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
-import TableThree from '../components/TableThree';
+import React from 'react';
 import DatosOrdenes from '../components/DatosOrdenes';
-import { useNavigate } from 'react-router-dom'; // Importar useNavigate
-
-
-interface Order {
-  idOs: number;
-  status: string;
-  descricaoProduto: string;
-  // Agrega más campos aquí si es necesario
-}
+import { useOrderData } from '../services/orderService';
 
 const Ordenes: React.FC = () => {
-  const [orders, setOrders] = useState<Order[]>([]);
-  const [error, setError] = useState<string>('');
-  const [loading, setLoading] = useState<boolean>(false);
-  const navigate = useNavigate(); // Usar el hook useNavigate dentro del componente
-
-  useEffect(() => {
-    const fetchOrders = async () => {
-      setLoading(true);  // Iniciar el estado de carga
-      setError('');  // Limpiar cualquier error previo
-      const token = localStorage.getItem('jwt');  // Recuperar el token JWT desde el localStorage
-      const clientId = localStorage.getItem('clientId');  // Recuperar el id cliente del localStorage
-      // console.log(clientId);
-      try {
-        const response = await fetch(`https://api.taller.digicom.com.gt/api/v1/clientes/os/${clientId}`, {
-          headers: {
-            'Authorization': `Bearer ${token}`
-          }
-        });
-
-        if (!response.ok) {
-          const data = await response.json();  // Parsear la respuesta JSON
-          throw new Error(data.message || 'Error al obtener las órdenes');
-        }
-
-        const data = await response.json();  // Parsear la respuesta JSON si la respuesta es correcta
-        setOrders(data.result);  // Guardar la respuesta de la API en el estado orders
-
-      } catch (error: any) {
-       
-        setError(error.message);  // Guardar cualquier error en el estado error
-      } finally {
-        setLoading(false);  // Terminar el estado de carga
-      }
-    };
-
-    fetchOrders();  // Llamar a la función fetchOrders para iniciar la llamada a la API
-  }, [navigate]);
+  const { orders, loading, error } = useOrderData();
 
   return (
     <>
       <Breadcrumb pageName="Ordenes" />
       <div className="flex flex-col gap-3">
-        <DatosOrdenes ordersdata={orders} />
+        {loading && <p>Cargando...</p>}
+        {error && <p>Error: {error}</p>}
+        {!loading && !error && <DatosOrdenes ordersdata={orders} />}
       </div>
     </>
   );
 };
 
 export default Ordenes;
-
-

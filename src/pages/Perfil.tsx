@@ -7,9 +7,9 @@ import { useClientData } from '../services/clientService';
 const Perfil: React.FC = () => {
   const { clientData, loading, error } = useClientData();
 
-  if (loading) return <div>Loading...</div>;
+  if (loading) return <div>Cargando...</div>;
   if (error) return <div>Error: {error}</div>;
-  if (!clientData) return <div>No client data available</div>;
+  if (!clientData) return <div>Informacion no encontrada</div>;
 
   return (
     <>
