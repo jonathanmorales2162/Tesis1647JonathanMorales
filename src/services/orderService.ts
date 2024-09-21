@@ -1,13 +1,24 @@
 import { useState, useEffect } from 'react';
 
-// Define the Order interface
+// Define the Order interface with all fields
 export interface Order {
   idOs: number;
   status: string;
   descricaoProduto: string;
   dataInicial: string;
   dataAtualizacao: string;
-  // Add other fields as needed
+  // New fields
+  dataFinal: string;
+  garantia: string;
+  defeito: string;
+  observacoes: string;
+  laudoTecnico: string;
+  valorTotal: number | null;
+  clientes_id: number;
+  usuarios_id: number;
+  lancamento: string | null;
+  faturado: number;
+  garantias_id: number | null;
 }
 
 export const useOrderData = (clientId?: string) => {
@@ -54,4 +65,31 @@ export const useOrderData = (clientId?: string) => {
   }, [clientId]);
 
   return { orders, loading, error };
+};
+
+// Add a new function to get a single order by ID
+export const getOrderById = async (orderId: number): Promise<Order> => {
+  const token = localStorage.getItem('jwt');
+
+  if (!token) {
+    throw new Error('No authentication token available');
+  }
+
+  try {
+    const response = await fetch(`https://api.taller.digicom.com.gt/api/v1/os/${orderId}`, {
+      headers: {
+        'Authorization': `Bearer ${token}`
+      }
+    });
+
+    if (!response.ok) {
+      throw new Error('Failed to fetch order details');
+    }
+
+    const data = await response.json();
+    return data.result;
+  } catch (err) {
+    console.error('Error fetching order:', err);
+    throw err;
+  }
 };

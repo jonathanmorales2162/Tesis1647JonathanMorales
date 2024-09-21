@@ -1,16 +1,28 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 
 interface Order {
   idOs: number;
-  dataInicial: string; // Suponiendo que tienes una fecha de creación
+  dataInicial: string;
+  dataFinal: string;
+  garantia: string;
+  descricaoProduto: string;
+  defeito: string;
   status: string;
-  descricaoProduto: string; 
-  dataAtualizacao: string; 
+  observacoes: string;
+  laudoTecnico: string;
+  valorTotal: number | null;
+  clientes_id: number;
+  usuarios_id: number;
+  lancamento: string | null;
+  faturado: number;
+  garantias_id: number | null;
 }
 
 interface DatosOrdenesProps {
   ordersdata: Order[];
 }
+
 // Formatear Fecha 
 const formatDate = (dateString: string) => {
   const date = new Date(dateString);
@@ -21,6 +33,10 @@ const formatDate = (dateString: string) => {
 };
 
 const DatosOrdenes: React.FC<DatosOrdenesProps> = ({ ordersdata }) => {
+  const handleVerDetalles = (order: Order) => {
+    localStorage.setItem(`order_${order.idOs}`, JSON.stringify(order));
+  };
+
   return (
     <div className="rounded-sm border border-stroke bg-white px-5 pt-6 pb-2.5 shadow-default dark:border-strokedark dark:bg-boxdark sm:px-7.5 xl:pb-1">
       <div className="max-w-full overflow-x-auto">
@@ -66,7 +82,12 @@ const DatosOrdenes: React.FC<DatosOrdenesProps> = ({ ordersdata }) => {
                   </td>
                   <td className="border-b border-[#eee] items-center py-5 px-4 dark:border-strokedark">
                     <div className="flex items-center space-x-3.5">
-                      <button className="hover:text-primary">
+                      <NavLink 
+                        to={`/ordenes/detalle/${order.idOs}`} 
+                        id='detalleOrden'  
+                        className="hover:text-primary transition-colors duration-200"
+                        onClick={() => handleVerDetalles(order)}
+                      >
                         <svg
                           className="fill-current"
                           width="18"
@@ -84,7 +105,7 @@ const DatosOrdenes: React.FC<DatosOrdenesProps> = ({ ordersdata }) => {
                             fill=""
                           />
                         </svg>
-                      </button>
+                      </NavLink>
                     </div>
                   </td>
                 </tr>
@@ -102,7 +123,5 @@ const DatosOrdenes: React.FC<DatosOrdenesProps> = ({ ordersdata }) => {
     </div>
   );
 };
-
-
 
 export default DatosOrdenes;

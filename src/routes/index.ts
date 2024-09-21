@@ -14,9 +14,8 @@ const SignIn = lazy(() => import('../pages/Authentication/SignIn'));
 
 const Perfil = lazy(() => import('../pages/Perfil'));
 const Ordenes = lazy(() => import ('../pages/Ordenes'));
+const Detalles = lazy(() => import ('../pages/Detalles'));
 // serviceWorker 
-
-
 
 const coreRoutes = [
   {
@@ -43,6 +42,11 @@ const coreRoutes = [
     path: '/ordenes',
     title: 'Ordenes',
     component: Ordenes,
+  },
+  {
+    path: '/ordenes/detalle/:id',
+    title: 'Detalles',
+    component: Detalles,
   },
   {
     path: '/forms/form-elements',
