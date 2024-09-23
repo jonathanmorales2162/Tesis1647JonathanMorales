@@ -3,6 +3,9 @@ import { useParams } from 'react-router-dom';
 import Breadcrumb from '../components/Breadcrumb';
 import { getOrderById, Order } from '../services/orderService';
 
+import userThree from '../images/user/user-03.png';
+import fireToast from '../hooks/fireToast';
+
 const Detalles: React.FC = () => {
   const { id } = useParams<{ id: string }>();
   const [order, setOrder] = useState<Order | null>(null);
@@ -30,7 +33,7 @@ const Detalles: React.FC = () => {
   }, [id]);
 
   if (!order) {
-    return <div>Cargando detalles de la orden...</div>;
+    return <div>Cargando detalle de la orden...</div>;
   }
 
   const formatDate = (dateString: string) => {
@@ -39,40 +42,141 @@ const Detalles: React.FC = () => {
     return date.toLocaleDateString();
   };
 
-  const renderField = (label: string, value: string | number | null) => (
-    <div className="mb-4">
-      <h4 className="font-semibold text-black dark:text-white">{label}</h4>
-      <p className="text-sm text-gray-600 dark:text-gray-400">
-        {value !== null && value !== '' ? value : 'Sin información'}
-      </p>
-    </div>
-  );
-
   return (
     <>
-      <Breadcrumb pageName={`Detalles de la Orden #${order.idOs}`} />
-
-      <div className="overflow-hidden rounded-sm border border-stroke bg-white shadow-default dark:border-strokedark dark:bg-boxdark">
-        <div className="px-4 pb-6 text-center lg:pb-8 xl:pb-11.5">
-          <h3 className="mb-1.5 text-2xl font-semibold text-black dark:text-white">
-            Orden #{order.idOs}
-          </h3>
+      <Breadcrumb pageName={`Detalle de la Orden #${order.idOs}`} />
           <p className="font-medium">Estado: {order.status}</p>
-          
-          <div className="mt-4.5 mb-5.5 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            {renderField('Descripción del Producto', order.descricaoProduto)}
-            {renderField('Defecto', order.defeito)}
-            {renderField('Observaciones', order.observacoes)}
-            {renderField('Laudo Técnico', order.laudoTecnico)}
-            {renderField('Valor Total', order.valorTotal !== null ? `$${order.valorTotal.toFixed(2)}` : null)}
-
-            {renderField('Lanzamiento', order.lancamento)}
-            {renderField('Facturado', order.faturado === 1 ? 'Sí' : 'No')}
-            {renderField('Fecha de Creación', formatDate(order.dataInicial))}
-            {renderField('Fecha Final', formatDate(order.dataFinal))}
-            {renderField('Fecha de Actualización', formatDate(order.dataAtualizacao))}
-            {renderField('Garantía', order.garantia)}
-
+      <div id='datos_detalle' className="overflow-hidden rounded-sm border border-stroke bg-white shadow-default dark:border-strokedark dark:bg-boxdark grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 p-6.5">
+        <div className="mb-5.5 flex flex-col gap-5.5">
+          <div className="w-full">
+            <label className="mb-3 block text-sm font-medium text-black dark:text-white" htmlFor="descricaoProduto">
+              Descripción del Producto
+            </label>
+            <div className="relative">
+              <label className="w-full rounded border  border-stroke bg-gray py-3 px-4.5 text-black whitespace-normal  break-words focus:border-primary focus-visible:outline-none dark:border-strokedark dark:bg-meta-4 dark:text-white dark:focus:border-primary" htmlFor="descricaoProduto">
+                {order.descricaoProduto || 'Sin información'}
+              </label>
+            </div>
+          </div>
+        </div>
+        <div className="mb-5.5 flex flex-col gap-5.5">
+          <div className="w-full">
+            <label className="mb-3 block text-sm font-medium text-black dark:text-white" htmlFor="defeito">
+              Defecto
+            </label>
+            <div className="relative">
+              <label className="w-full rounded border border-stroke bg-gray py-3 px-4.5 text-black focus:border-primary focus-visible:outline-none dark:border-strokedark dark:bg-meta-4 dark:text-white dark:focus:border-primary" htmlFor="defeito">
+                {order.defeito || 'Sin información'}
+              </label>
+            </div>
+          </div>
+        </div>
+        <div className="mb-5.5 flex flex-col gap-5.5">
+          <div className="w-full">
+            <label className="mb-3 block text-sm font-medium text-black dark:text-white" htmlFor="observacoes">
+              Observaciones
+            </label>
+            <div className="relative">
+              <label className="w-full rounded border border-stroke bg-gray py-3 px-4.5 text-black focus:border-primary focus-visible:outline-none dark:border-strokedark dark:bg-meta-4 dark:text-white dark:focus:border-primary" htmlFor="observacoes">
+                {order.observacoes || 'Sin información'}
+              </label>
+            </div>
+          </div>
+        </div>
+        <div className="mb-5.5 flex flex-col gap-5.5">
+          <div className="w-full">
+            <label className="mb-3 block text-sm font-medium text-black dark:text-white" htmlFor="laudoTecnico">
+              Laudo Técnico
+            </label>
+            <div className="relative">
+              <label className="w-full rounded border border-stroke bg-gray py-3 px-4.5 text-black focus:border-primary focus-visible:outline-none dark:border-strokedark dark:bg-meta-4 dark:text-white dark:focus:border-primary" htmlFor="laudoTecnico">
+                {order.laudoTecnico || 'Sin información'}
+              </label>
+            </div>
+          </div>
+        </div>
+        <div className="mb-5.5 flex flex-col gap-5.5">
+          <div className="w-full">
+            <label className="mb-3 block text-sm font-medium text-black dark:text-white" htmlFor="valorTotal">
+              Valor Total
+            </label>
+            <div className="relative">
+              <label className="w-full rounded border border-stroke bg-gray py-3 px-4.5 text-black focus:border-primary focus-visible:outline-none dark:border-strokedark dark:bg-meta-4 dark:text-white dark:focus:border-primary" htmlFor="valorTotal">
+                {order.valorTotal !== null ? `$${order.valorTotal.toFixed(2)}` : 'Sin información'}
+              </label>
+            </div>
+          </div>
+        </div>
+        <div className="mb-5.5 flex flex-col gap-5.5">
+          <div className="w-full">
+            <label className="mb-3 block text-sm font-medium text-black dark:text-white" htmlFor="lancamento">
+              Lanzamiento
+            </label>
+            <div className="relative">
+              <label className="w-full rounded border border-stroke bg-gray py-3 px-4.5 text-black focus:border-primary focus-visible:outline-none dark:border-strokedark dark:bg-meta-4 dark:text-white dark:focus:border-primary" htmlFor="lancamento">
+                {order.lancamento || 'Sin información'}
+              </label>
+            </div>
+          </div>
+        </div>
+        <div className="mb-5.5 flex flex-col gap-5.5">
+          <div className="w-full">
+            <label className="mb-3 block text-sm font-medium text-black dark:text-white" htmlFor="faturado">
+              Facturado
+            </label>
+            <div className="relative">
+              <label className="w-full rounded border border-stroke bg-gray py-3 px-4.5 text-black focus:border-primary focus-visible:outline-none dark:border-strokedark dark:bg-meta-4 dark:text-white dark:focus:border-primary" htmlFor="faturado">
+                {order.faturado === 1 ? 'Sí' : 'No'}
+              </label>
+            </div>
+          </div>
+        </div>
+        <div className="mb-5.5 flex flex-col gap-5.5">
+          <div className="w-full">
+            <label className="mb-3 block text-sm font-medium text-black dark:text-white" htmlFor="dataInicial">
+              Fecha de Creación
+            </label>
+            <div className="relative">
+              <label className="w-full rounded border border-stroke bg-gray py-3 px-4.5 text-black focus:border-primary focus-visible:outline-none dark:border-strokedark dark:bg-meta-4 dark:text-white dark:focus:border-primary" htmlFor="dataInicial">
+                {formatDate(order.dataInicial)}
+              </label>
+            </div>
+          </div>
+        </div>
+        <div className="mb-5.5 flex flex-col gap-5.5">
+          <div className="w-full">
+            <label className="mb-3 block text-sm font-medium text-black dark:text-white" htmlFor="dataFinal">
+              Fecha Final
+            </label>
+            <div className="relative">
+              <label className="w-full rounded border border-stroke bg-gray py-3 px-4.5 text-black focus:border-primary focus-visible:outline-none dark:border-strokedark dark:bg-meta-4 dark:text-white dark:focus:border-primary" htmlFor="dataFinal">
+                {formatDate(order.dataFinal)}
+              </label>
+            </div>
+          </div>
+        </div>
+        <div className="mb-5.5 flex flex-col gap-5.5">
+          <div className="w-full">
+            <label className="mb-3 block text-sm font-medium text-black dark:text-white" htmlFor="dataAtualizacao">
+              Fecha de Actualización
+            </label>
+            <div className="relative">
+              <label className="w-full rounded border border-stroke bg-gray py-3 px-4.5 text-black focus:border-primary focus-visible:outline-none dark:border-strokedark dark:bg-meta-4 dark:text-white dark:focus:border-primary" htmlFor="dataAtualizacao">
+                {formatDate(order.dataAtualizacao)}
+              </label>
+            </div>
+          </div>
+        </div>
+        <div className="mb-5.5 flex flex-col gap-5.5">
+          <div className="w-full">
+            <label className="mb-3 block text-sm font-medium text-black dark:text-white" htmlFor="garantia">
+              Garantía
+            </label>
+            <div className="relative">
+              <label className="w-full rounded border border-stroke bg-gray py-3 px-4.5 text-black focus:border-primary focus-visible:outline-none dark:border-strokedark dark:bg-meta-4 dark:text-white dark:focus:border-primary" htmlFor="garantia">
+                {order.garantia || 'Sin información'}
+              </label>
+            </div>
           </div>
         </div>
       </div>
