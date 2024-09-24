@@ -29,11 +29,10 @@ const Perfil: React.FC = () => {
               <img src={userDefault} alt="profile" />
             </div>
           </div>
-          
         </div>
       </div>
 
-      {/* datos para el formulario en modo solo lectura */}
+      {/* datos del cliente en modo solo lectura */}
       <div className="rounded-sm border border-stroke bg-white shadow-default dark:border-strokedark dark:bg-boxdark">
         <div className="border-b border-stroke py-4 px-6.5 dark:border-strokedark">
           <h3 className="font-medium text-black dark:text-white">Datos del Cliente</h3>
@@ -41,42 +40,30 @@ const Perfil: React.FC = () => {
         <div className="flex flex-col gap-5.5 p-6.5">
           <div>
             <label className="mb-3 block text-black dark:text-white">Nombre Completo</label>
-            <input
-              type="text"
-              value={clientData.nomeCliente || 'No especificado'}
-              readOnly
-              className="w-full rounded-lg border-[1.5px] border-stroke bg-gray-100 py-3 px-5 font-medium outline-none focus:border-primary dark:bg-form-input dark:border-form-strokedark dark:focus:border-primary"
-            />
+            <div className="w-full rounded-lg border-[1.5px] border-stroke bg-gray-100 py-3 px-5 font-medium outline-none dark:bg-form-input dark:border-form-strokedark">
+              {clientData.nomeCliente || 'No especificado'}
+            </div>
           </div>
 
           <div>
             <label className="mb-3 block text-black dark:text-white">Teléfono</label>
-            <input
-              type="text"
-              value={clientData.telefone || 'No especificado'}
-              readOnly
-              className="w-full rounded-lg border-[1.5px] border-stroke bg-gray-100 py-3 px-5 font-medium outline-none focus:border-primary dark:bg-form-input dark:border-form-strokedark dark:focus:border-primary"
-            />
+            <div className="w-full rounded-lg border-[1.5px] border-stroke bg-gray-100 py-3 px-5 font-medium outline-none dark:bg-form-input dark:border-form-strokedark">
+              {clientData.telefone || 'No especificado'}
+            </div>
           </div>
 
           <div>
             <label className="mb-3 block text-black dark:text-white">Email</label>
-            <input
-              type="email"
-              value={clientData.email || 'No especificado'}
-              readOnly
-              className="w-full rounded-lg border-[1.5px] border-stroke bg-gray-100 py-3 px-5 font-medium outline-none focus:border-primary dark:bg-form-input dark:border-form-strokedark dark:focus:border-primary"
-            />
+            <div className="w-full rounded-lg border-[1.5px] border-stroke bg-gray-100 py-3 px-5 font-medium outline-none dark:bg-form-input dark:border-form-strokedark">
+              {clientData.email || 'No especificado'}
+            </div>
           </div>
 
           <div>
             <label className="mb-3 block text-black dark:text-white">Dirección</label>
-            <input
-              type="text"
-              value={`${clientData.rua} ${clientData.numero}, ${clientData.bairro}, ${clientData.cidade}, ${clientData.estado}, ${clientData.cep}` || 'No especificado'}
-              readOnly
-              className="w-full rounded-lg border-[1.5px] border-stroke bg-gray-100 py-3 px-5 font-medium outline-none focus:border-primary dark:bg-form-input dark:border-form-strokedark dark:focus:border-primary"
-            />
+            <div className="w-full rounded-lg border-[1.5px] border-stroke bg-gray-100 py-3 px-5 font-medium outline-none dark:bg-form-input dark:border-form-strokedark">
+              {`${clientData.rua || ''} ${clientData.numero || ''}, ${clientData.bairro || ''}, ${clientData.cidade || ''}, ${clientData.estado || ''}, ${clientData.cep || ''}`.trim() || 'No especificado'}
+            </div>
           </div>
         </div>
       </div>
