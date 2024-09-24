@@ -1,11 +1,17 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Breadcrumb from '../components/Breadcrumb';
 import fondo2 from '../images/cover/fondo2.png';
 import userDefault from '../images/user/perfildefault.png';
 import { useClientData } from '../services/clientService';
+import AlertDispley from '../components/AlertDispley';
 
 const Perfil: React.FC = () => {
   const { clientData, loading, error } = useClientData();
+  const [showAlert, setShowAlert] = useState(false);
+
+  const toggleAlert = () => {
+    setShowAlert(!showAlert);
+  };
 
   if (loading) return <div>Cargando...</div>;
   if (error) return <div>Error: {error}</div>;
@@ -14,6 +20,13 @@ const Perfil: React.FC = () => {
   return (
     <>
       <Breadcrumb pageName="Perfil" />
+      <button
+        onClick={toggleAlert}
+        className="mb-4 px-4 py-2 bg-primary text-white rounded hover:bg-opacity-90 transition duration-300"
+      >
+        Mostrar Alerta
+      </button>
+      {showAlert && <AlertDispley />}
 
       <div className="overflow-hidden rounded-sm border border-stroke bg-white shadow-default dark:border-strokedark dark:bg-boxdark">
         <div className="relative z-20 h-35 md:h-65">
@@ -31,8 +44,7 @@ const Perfil: React.FC = () => {
           </div>
         </div>
       </div>
-
-      {/* datos del cliente en modo solo lectura */}
+ 
       <div className="rounded-sm border border-stroke bg-white shadow-default dark:border-strokedark dark:bg-boxdark">
         <div className="border-b border-stroke py-4 px-6.5 dark:border-strokedark">
           <h3 className="font-medium text-black dark:text-white">Datos del Cliente</h3>

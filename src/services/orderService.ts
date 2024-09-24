@@ -33,8 +33,8 @@ export const useOrderData = (clientId?: string) => {
 
       const token = localStorage.getItem('jwt');
       const storedClientId = localStorage.getItem('clientId');
-      const effectiveClientId = 36;
-      //const effectiveClientId = clientId || storedClientId;
+      //const effectiveClientId = 36;
+      const effectiveClientId = clientId || storedClientId;
 
       if (!effectiveClientId) {
         setError('Cliente no disponible');
@@ -77,7 +77,6 @@ export const getOrderById = async (orderId: number): Promise<Order> => {
   }
 
   try {
-    //const response = await fetch(`https://api.taller.digicom.com.gt/api/v1/os/${orderId}`, {
     const response = await fetch(`https://api.taller.digicom.com.gt/api/v1/os/${orderId}`, {
       headers: {
         'Authorization': `Bearer ${token}`

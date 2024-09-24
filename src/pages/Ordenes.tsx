@@ -1,6 +1,7 @@
 import Breadcrumb from '../components/Breadcrumb';
 import React from 'react';
 import DatosOrdenes from '../components/DatosOrdenes';
+
 import { useOrderData } from '../services/orderService';
 
 const Ordenes: React.FC = () => {
@@ -13,6 +14,7 @@ const Ordenes: React.FC = () => {
         {loading && <p>Cargando...</p>}
         {error && <p>Error: {error}</p>}
         {!loading && !error && <DatosOrdenes ordersdata={orders} />}
+        
       </div>
     </>
   );
