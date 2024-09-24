@@ -33,10 +33,11 @@ export const useOrderData = (clientId?: string) => {
 
       const token = localStorage.getItem('jwt');
       const storedClientId = localStorage.getItem('clientId');
-      const effectiveClientId = clientId || storedClientId;
+      const effectiveClientId = 36;
+      //const effectiveClientId = clientId || storedClientId;
 
       if (!effectiveClientId) {
-        setError('No client ID available');
+        setError('Cliente no disponible');
         setLoading(false);
         return;
       }
@@ -49,13 +50,13 @@ export const useOrderData = (clientId?: string) => {
         });
 
         if (!response.ok) {
-          throw new Error('Failed to fetch orders');
+          throw new Error('Fallo al obtener las ordenes de servicio');
         }
 
         const data = await response.json();
         setOrders(data.result);
       } catch (err) {
-        setError(err instanceof Error ? err.message : 'An error occurred');
+        setError(err instanceof Error ? err.message : 'A ocurrido un error');
       } finally {
         setLoading(false);
       }
@@ -72,10 +73,11 @@ export const getOrderById = async (orderId: number): Promise<Order> => {
   const token = localStorage.getItem('jwt');
 
   if (!token) {
-    throw new Error('No authentication token available');
+    throw new Error('Token de autoenticación no valido');
   }
 
   try {
+    //const response = await fetch(`https://api.taller.digicom.com.gt/api/v1/os/${orderId}`, {
     const response = await fetch(`https://api.taller.digicom.com.gt/api/v1/os/${orderId}`, {
       headers: {
         'Authorization': `Bearer ${token}`
@@ -83,13 +85,13 @@ export const getOrderById = async (orderId: number): Promise<Order> => {
     });
 
     if (!response.ok) {
-      throw new Error('Failed to fetch order details');
+      throw new Error('Fallo al obtener la orden de servicio');
     }
 
     const data = await response.json();
     return data.result;
   } catch (err) {
-    console.error('Error fetching order:', err);
+    console.error('Error al obtener:', err);
     throw err;
   }
 };

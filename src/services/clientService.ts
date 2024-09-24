@@ -34,7 +34,8 @@ export const useClientData = (clientId?: string) => {
 
       const token = localStorage.getItem('jwt');
       const storedClientId = localStorage.getItem('clientId');
-      const effectiveClientId = clientId || storedClientId;
+      //const effectiveClientId = clientId || storedClientId;
+      const effectiveClientId = 36;
 
       if (!effectiveClientId) {
         setError('No client ID available');
@@ -43,6 +44,7 @@ export const useClientData = (clientId?: string) => {
       }
 
       try {
+        //const response = await fetch(`https://api.taller.digicom.com.gt/api/v1/clientes/${effectiveClientId}`, {
         const response = await fetch(`https://api.taller.digicom.com.gt/api/v1/clientes/${effectiveClientId}`, {
           headers: {
             'Authorization': `Bearer ${token}`

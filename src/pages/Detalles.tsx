@@ -45,137 +45,148 @@ const Detalles: React.FC = () => {
   return (
     <>
       <Breadcrumb pageName={`Detalle de la Orden #${order.idOs}`} />
-          <p className="font-medium">Estado: {order.status}</p>
-      <div id='datos_detalle' className="overflow-hidden rounded-sm border border-stroke bg-white shadow-default dark:border-strokedark dark:bg-boxdark grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 p-6.5">
-        <div className="mb-5.5 flex flex-col gap-5.5">
+      <div id='datos_detalle' className="overflow-hidden rounded-sm border border-stroke bg-white shadow-default dark:border-strokedark dark:bg-boxdark grid grid-cols-1 gap-2 p-3.5">
+        <div className="mb-2 flex flex-col gap-1">
           <div className="w-full">
-            <label className="mb-3 block text-sm font-medium text-black dark:text-white" htmlFor="descricaoProduto">
+            <label className="mb-1 block text-sm font-medium text-black dark:text-white" htmlFor="status">
+              Estado
+            </label>
+            <div className="relative">
+              <div className="w-full rounded border border-stroke bg-gray py-1 px-2 text-base text-black whitespace-pre-wrap break-words focus:border-primary focus-visible:outline-none dark:border-strokedark dark:bg-meta-4 dark:text-white dark:focus:border-primary overflow-y-auto max-h-24">
+                {order.status || 'Sin información'}
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="mb-2 flex flex-col gap-1">
+          <div className="w-full">
+            <label className="mb-1 block text-sm font-medium text-black dark:text-white" htmlFor="descricaoProduto">
               Descripción del Producto
             </label>
             <div className="relative">
-              <label className="w-full rounded border  border-stroke bg-gray py-3 px-4.5 text-black whitespace-normal  break-words focus:border-primary focus-visible:outline-none dark:border-strokedark dark:bg-meta-4 dark:text-white dark:focus:border-primary" htmlFor="descricaoProduto">
+              <div className="w-full rounded border border-stroke bg-gray py-1 px-2 text-base text-black whitespace-pre-wrap break-words focus:border-primary focus-visible:outline-none dark:border-strokedark dark:bg-meta-4 dark:text-white dark:focus:border-primary overflow-y-auto max-h-24">
                 {order.descricaoProduto || 'Sin información'}
-              </label>
+              </div>
             </div>
           </div>
         </div>
-        <div className="mb-5.5 flex flex-col gap-5.5">
+        <div className="mb-2 flex flex-col gap-1">
           <div className="w-full">
-            <label className="mb-3 block text-sm font-medium text-black dark:text-white" htmlFor="defeito">
+            <label className="mb-1 block text-sm font-medium text-black dark:text-white" htmlFor="defeito">
               Defecto
             </label>
             <div className="relative">
-              <label className="w-full rounded border border-stroke bg-gray py-3 px-4.5 text-black focus:border-primary focus-visible:outline-none dark:border-strokedark dark:bg-meta-4 dark:text-white dark:focus:border-primary" htmlFor="defeito">
+              <div className="w-full rounded border border-stroke bg-gray py-1 px-2 text-base text-black whitespace-pre-wrap break-words focus:border-primary focus-visible:outline-none dark:border-strokedark dark:bg-meta-4 dark:text-white dark:focus:border-primary overflow-y-auto max-h-24">
                 {order.defeito || 'Sin información'}
-              </label>
+              </div>
             </div>
           </div>
         </div>
-        <div className="mb-5.5 flex flex-col gap-5.5">
+        <div className="mb-2 flex flex-col gap-1">
           <div className="w-full">
-            <label className="mb-3 block text-sm font-medium text-black dark:text-white" htmlFor="observacoes">
+            <label className="mb-1 block text-sm font-medium text-black dark:text-white" htmlFor="observacoes">
               Observaciones
             </label>
             <div className="relative">
-              <label className="w-full rounded border border-stroke bg-gray py-3 px-4.5 text-black focus:border-primary focus-visible:outline-none dark:border-strokedark dark:bg-meta-4 dark:text-white dark:focus:border-primary" htmlFor="observacoes">
+              <div className="w-full rounded border border-stroke bg-gray py-1 px-2 text-base text-black whitespace-pre-wrap break-words focus:border-primary focus-visible:outline-none dark:border-strokedark dark:bg-meta-4 dark:text-white dark:focus:border-primary overflow-y-auto max-h-24">
                 {order.observacoes || 'Sin información'}
-              </label>
+              </div>
             </div>
           </div>
         </div>
-        <div className="mb-5.5 flex flex-col gap-5.5">
+        <div className="mb-2 flex flex-col gap-1">
           <div className="w-full">
-            <label className="mb-3 block text-sm font-medium text-black dark:text-white" htmlFor="laudoTecnico">
+            <label className="mb-1 block text-sm font-medium text-black dark:text-white" htmlFor="laudoTecnico">
               Laudo Técnico
             </label>
             <div className="relative">
-              <label className="w-full rounded border border-stroke bg-gray py-3 px-4.5 text-black focus:border-primary focus-visible:outline-none dark:border-strokedark dark:bg-meta-4 dark:text-white dark:focus:border-primary" htmlFor="laudoTecnico">
+              <div className="w-full rounded border border-stroke bg-gray py-1 px-2 text-base text-black whitespace-pre-wrap break-words focus:border-primary focus-visible:outline-none dark:border-strokedark dark:bg-meta-4 dark:text-white dark:focus:border-primary overflow-y-auto max-h-24">
                 {order.laudoTecnico || 'Sin información'}
-              </label>
+              </div>
             </div>
           </div>
         </div>
-        <div className="mb-5.5 flex flex-col gap-5.5">
+        <div className="mb-2 flex flex-col gap-1">
           <div className="w-full">
-            <label className="mb-3 block text-sm font-medium text-black dark:text-white" htmlFor="valorTotal">
+            <label className="mb-1 block text-sm font-medium text-black dark:text-white" htmlFor="valorTotal">
               Valor Total
             </label>
             <div className="relative">
-              <label className="w-full rounded border border-stroke bg-gray py-3 px-4.5 text-black focus:border-primary focus-visible:outline-none dark:border-strokedark dark:bg-meta-4 dark:text-white dark:focus:border-primary" htmlFor="valorTotal">
+              <div className="w-full rounded border border-stroke bg-gray py-1 px-2 text-base text-black whitespace-pre-wrap break-words focus:border-primary focus-visible:outline-none dark:border-strokedark dark:bg-meta-4 dark:text-white dark:focus:border-primary overflow-y-auto max-h-24">
                 {order.valorTotal !== null ? `$${order.valorTotal.toFixed(2)}` : 'Sin información'}
-              </label>
+              </div>
             </div>
           </div>
         </div>
-        <div className="mb-5.5 flex flex-col gap-5.5">
+        <div className="mb-2 flex flex-col gap-1">
           <div className="w-full">
-            <label className="mb-3 block text-sm font-medium text-black dark:text-white" htmlFor="lancamento">
+            <label className="mb-1 block text-sm font-medium text-black dark:text-white" htmlFor="lancamento">
               Lanzamiento
             </label>
             <div className="relative">
-              <label className="w-full rounded border border-stroke bg-gray py-3 px-4.5 text-black focus:border-primary focus-visible:outline-none dark:border-strokedark dark:bg-meta-4 dark:text-white dark:focus:border-primary" htmlFor="lancamento">
+              <div className="w-full rounded border border-stroke bg-gray py-1 px-2 text-base text-black whitespace-pre-wrap break-words focus:border-primary focus-visible:outline-none dark:border-strokedark dark:bg-meta-4 dark:text-white dark:focus:border-primary overflow-y-auto max-h-24">
                 {order.lancamento || 'Sin información'}
-              </label>
+              </div>
             </div>
           </div>
         </div>
-        <div className="mb-5.5 flex flex-col gap-5.5">
+        <div className="mb-2 flex flex-col gap-1">
           <div className="w-full">
-            <label className="mb-3 block text-sm font-medium text-black dark:text-white" htmlFor="faturado">
+            <label className="mb-1 block text-sm font-medium text-black dark:text-white" htmlFor="faturado">
               Facturado
             </label>
             <div className="relative">
-              <label className="w-full rounded border border-stroke bg-gray py-3 px-4.5 text-black focus:border-primary focus-visible:outline-none dark:border-strokedark dark:bg-meta-4 dark:text-white dark:focus:border-primary" htmlFor="faturado">
+              <div className="w-full rounded border border-stroke bg-gray py-1 px-2 text-base text-black whitespace-pre-wrap break-words focus:border-primary focus-visible:outline-none dark:border-strokedark dark:bg-meta-4 dark:text-white dark:focus:border-primary overflow-y-auto max-h-24">
                 {order.faturado === 1 ? 'Sí' : 'No'}
-              </label>
+              </div>
             </div>
           </div>
         </div>
-        <div className="mb-5.5 flex flex-col gap-5.5">
+        <div className="mb-2 flex flex-col gap-1">
           <div className="w-full">
-            <label className="mb-3 block text-sm font-medium text-black dark:text-white" htmlFor="dataInicial">
+            <label className="mb-1 block text-sm font-medium text-black dark:text-white" htmlFor="dataInicial">
               Fecha de Creación
             </label>
             <div className="relative">
-              <label className="w-full rounded border border-stroke bg-gray py-3 px-4.5 text-black focus:border-primary focus-visible:outline-none dark:border-strokedark dark:bg-meta-4 dark:text-white dark:focus:border-primary" htmlFor="dataInicial">
+              <div className="w-full rounded border border-stroke bg-gray py-1 px-2 text-base text-black whitespace-pre-wrap break-words focus:border-primary focus-visible:outline-none dark:border-strokedark dark:bg-meta-4 dark:text-white dark:focus:border-primary overflow-y-auto max-h-24">
                 {formatDate(order.dataInicial)}
-              </label>
+              </div>
             </div>
           </div>
         </div>
-        <div className="mb-5.5 flex flex-col gap-5.5">
+        <div className="mb-2 flex flex-col gap-1">
           <div className="w-full">
-            <label className="mb-3 block text-sm font-medium text-black dark:text-white" htmlFor="dataFinal">
+            <label className="mb-1 block text-sm font-medium text-black dark:text-white" htmlFor="dataFinal">
               Fecha Final
             </label>
             <div className="relative">
-              <label className="w-full rounded border border-stroke bg-gray py-3 px-4.5 text-black focus:border-primary focus-visible:outline-none dark:border-strokedark dark:bg-meta-4 dark:text-white dark:focus:border-primary" htmlFor="dataFinal">
+              <div className="w-full rounded border border-stroke bg-gray py-1 px-2 text-base text-black whitespace-pre-wrap break-words focus:border-primary focus-visible:outline-none dark:border-strokedark dark:bg-meta-4 dark:text-white dark:focus:border-primary overflow-y-auto max-h-24">
                 {formatDate(order.dataFinal)}
-              </label>
+              </div>
             </div>
           </div>
         </div>
-        <div className="mb-5.5 flex flex-col gap-5.5">
+        <div className="mb-2 flex flex-col gap-1">
           <div className="w-full">
-            <label className="mb-3 block text-sm font-medium text-black dark:text-white" htmlFor="dataAtualizacao">
+            <label className="mb-1 block text-sm font-medium text-black dark:text-white" htmlFor="dataAtualizacao">
               Fecha de Actualización
             </label>
             <div className="relative">
-              <label className="w-full rounded border border-stroke bg-gray py-3 px-4.5 text-black focus:border-primary focus-visible:outline-none dark:border-strokedark dark:bg-meta-4 dark:text-white dark:focus:border-primary" htmlFor="dataAtualizacao">
+              <div className="w-full rounded border border-stroke bg-gray py-1 px-2 text-base text-black whitespace-pre-wrap break-words focus:border-primary focus-visible:outline-none dark:border-strokedark dark:bg-meta-4 dark:text-white dark:focus:border-primary overflow-y-auto max-h-24">
                 {formatDate(order.dataAtualizacao)}
-              </label>
+              </div>
             </div>
           </div>
         </div>
-        <div className="mb-5.5 flex flex-col gap-5.5">
+        <div className="mb-2 flex flex-col gap-1">
           <div className="w-full">
-            <label className="mb-3 block text-sm font-medium text-black dark:text-white" htmlFor="garantia">
+            <label className="mb-1 block text-sm font-medium text-black dark:text-white" htmlFor="garantia">
               Garantía
             </label>
             <div className="relative">
-              <label className="w-full rounded border border-stroke bg-gray py-3 px-4.5 text-black focus:border-primary focus-visible:outline-none dark:border-strokedark dark:bg-meta-4 dark:text-white dark:focus:border-primary" htmlFor="garantia">
+              <div className="w-full rounded border border-stroke bg-gray py-1 px-2 text-base text-black whitespace-pre-wrap break-words focus:border-primary focus-visible:outline-none dark:border-strokedark dark:bg-meta-4 dark:text-white dark:focus:border-primary overflow-y-auto max-h-24">
                 {order.garantia || 'Sin información'}
-              </label>
+              </div>
             </div>
           </div>
         </div>
