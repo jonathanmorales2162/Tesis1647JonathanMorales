@@ -20,13 +20,6 @@ const Perfil: React.FC = () => {
   return (
     <>
       <Breadcrumb pageName="Perfil" />
-      <button
-        onClick={toggleAlert}
-        className="mb-4 px-4 py-2 bg-primary text-white rounded hover:bg-opacity-90 transition duration-300"
-      >
-        Mostrar Alerta
-      </button>
-      {showAlert && <AlertDispley />}
 
       <div className="overflow-hidden rounded-sm border border-stroke bg-white shadow-default dark:border-strokedark dark:bg-boxdark">
         <div className="relative z-20 h-35 md:h-65">
