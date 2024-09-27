@@ -85,12 +85,6 @@ const Detalles: React.FC = () => {
             </dd>
           </div>
           <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-            <dt className="text-sm font-medium leading-6 text-gray-900">Lanzamiento</dt>
-            <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0 bg-gray py-1 px-2 text-base text-black whitespace-pre-wrap focus:border-primary focus-visible:outline-none dark:border-strokedark dark:bg-meta-4 dark:text-white dark:focus:border-primary overflow-y-auto max-h-24"> 
-            {order.lancamento || 'Sin información'}
-            </dd>
-          </div>
-          <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
             <dt className="text-sm font-medium leading-6 text-gray-900">Facturado</dt>
             <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0 bg-gray py-1 px-2 text-base text-black whitespace-pre-wrap focus:border-primary focus-visible:outline-none dark:border-strokedark dark:bg-meta-4 dark:text-white dark:focus:border-primary overflow-y-auto max-h-24"> 
             {order.faturado === 1 ? 'Sí' : 'No'}
