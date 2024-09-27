@@ -109,167 +109,24 @@ const Detalles: React.FC = () => {
             </dd>
           </div>
           <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-            <dt className="text-sm font-medium leading-6 text-gray-900">Fecha de Actualización</dt>
-            <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0 bg-gray py-1 px-2 text-base text-black whitespace-pre-wrap focus:border-primary focus-visible:outline-none dark:border-strokedark dark:bg-meta-4 dark:text-white dark:focus:border-primary overflow-y-auto max-h-24"> 
-            {formatDate(order.dataAtualizacao)}
-            </dd>
-          </div>
-          <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
             <dt className="text-sm font-medium leading-6 text-gray-900">Garantía</dt>
             <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0 bg-gray py-1 px-2 text-base text-black whitespace-pre-wrap focus:border-primary focus-visible:outline-none dark:border-strokedark dark:bg-meta-4 dark:text-white dark:focus:border-primary overflow-y-auto max-h-24"> 
             {order.garantia || 'Sin información'}
             </dd>
           </div>
-         
+          {/* <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+            <dt className="text-sm font-medium leading-6 text-gray-900">Fecha de Actualización</dt>
+            <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0 bg-gray py-1 px-2 text-base text-black whitespace-pre-wrap focus:border-primary focus-visible:outline-none dark:border-strokedark dark:bg-meta-4 dark:text-white dark:focus:border-primary overflow-y-auto max-h-24"> 
+            {formatDate(order.dataAtualizacao)}
+            </dd>
+          </div> */}
+          <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+           
+          </div>
         </dl>
       </div>   
       </div>
-      {/* <div id='datos_detalle' className="overflow-hidden rounded-sm border border-stroke bg-white shadow-default dark:border-strokedark dark:bg-boxdark grid grid-cols-1 gap-2 p-3.5">
-        <div className="mb-2 flex flex-col gap-1">
-          <div className="w-full">
-            <label className="mb-1 block text-sm font-medium text-black dark:text-white" htmlFor="status">
-              Estado
-            </label>
-            <div className="relative">
-              <div className="w-full rounded border border-stroke bg-gray py-1 px-2 text-base text-black whitespace-pre-wrap break-words focus:border-primary focus-visible:outline-none dark:border-strokedark dark:bg-meta-4 dark:text-white dark:focus:border-primary overflow-y-auto max-h-24">
-                {order.status || 'Sin información'}
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className="mb-2 flex flex-col gap-1">
-          <div className="w-full">
-            <label className="mb-1 block text-sm font-medium text-black dark:text-white" htmlFor="descricaoProduto">
-              Descripción del Producto
-            </label>
-            <div className="relative">
-              <div className="w-full rounded border border-stroke bg-gray py-1 px-2 text-base text-black whitespace-pre-wrap break-words focus:border-primary focus-visible:outline-none dark:border-strokedark dark:bg-meta-4 dark:text-white dark:focus:border-primary overflow-y-auto max-h-24">
-                {order.descricaoProduto || 'Sin información'}
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className="mb-2 flex flex-col gap-1">
-          <div className="w-full">
-            <label className="mb-1 block text-sm font-medium text-black dark:text-white" htmlFor="defeito">
-              Defecto
-            </label>
-            <div className="relative">
-              <div className="w-full rounded border border-stroke bg-gray py-1 px-2 text-base text-black whitespace-pre-wrap break-words focus:border-primary focus-visible:outline-none dark:border-strokedark dark:bg-meta-4 dark:text-white dark:focus:border-primary overflow-y-auto max-h-24">
-                {order.defeito || 'Sin información'}
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className="mb-2 flex flex-col gap-1">
-          <div className="w-full">
-            <label className="mb-1 block text-sm font-medium text-black dark:text-white" htmlFor="observacoes">
-              Observaciones
-            </label>
-            <div className="relative">
-              <div className="w-full rounded border border-stroke bg-gray py-1 px-2 text-base text-black whitespace-pre-wrap break-words focus:border-primary focus-visible:outline-none dark:border-strokedark dark:bg-meta-4 dark:text-white dark:focus:border-primary overflow-y-auto max-h-24">
-                {order.observacoes || 'Sin información'}
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className="mb-2 flex flex-col gap-1">
-          <div className="w-full">
-            <label className="mb-1 block text-sm font-medium text-black dark:text-white" htmlFor="laudoTecnico">
-              Laudo Técnico
-            </label>
-            <div className="relative">
-              <div className="w-full rounded border border-stroke bg-gray py-1 px-2 text-base text-black whitespace-pre-wrap break-words focus:border-primary focus-visible:outline-none dark:border-strokedark dark:bg-meta-4 dark:text-white dark:focus:border-primary overflow-y-auto max-h-24">
-                {order.laudoTecnico || 'Sin información'}
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className="mb-2 flex flex-col gap-1">
-          <div className="w-full">
-            <label className="mb-1 block text-sm font-medium text-black dark:text-white" htmlFor="valorTotal">
-              Valor Total
-            </label>
-            <div className="relative">
-              <div className="w-full rounded border border-stroke bg-gray py-1 px-2 text-base text-black whitespace-pre-wrap break-words focus:border-primary focus-visible:outline-none dark:border-strokedark dark:bg-meta-4 dark:text-white dark:focus:border-primary overflow-y-auto max-h-24">
-                {order.valorTotal !== null ? `$${order.valorTotal.toFixed(2)}` : 'Sin información'}
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className="mb-2 flex flex-col gap-1">
-          <div className="w-full">
-            <label className="mb-1 block text-sm font-medium text-black dark:text-white" htmlFor="lancamento">
-              Lanzamiento
-            </label>
-            <div className="relative">
-              <div className="w-full rounded border border-stroke bg-gray py-1 px-2 text-base text-black whitespace-pre-wrap break-words focus:border-primary focus-visible:outline-none dark:border-strokedark dark:bg-meta-4 dark:text-white dark:focus:border-primary overflow-y-auto max-h-24">
-                {order.lancamento || 'Sin información'}
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className="mb-2 flex flex-col gap-1">
-          <div className="w-full">
-            <label className="mb-1 block text-sm font-medium text-black dark:text-white" htmlFor="faturado">
-              Facturado
-            </label>
-            <div className="relative">
-              <div className="w-full rounded border border-stroke bg-gray py-1 px-2 text-base text-black whitespace-pre-wrap break-words focus:border-primary focus-visible:outline-none dark:border-strokedark dark:bg-meta-4 dark:text-white dark:focus:border-primary overflow-y-auto max-h-24">
-                {order.faturado === 1 ? 'Sí' : 'No'}
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className="mb-2 flex flex-col gap-1">
-          <div className="w-full">
-            <label className="mb-1 block text-sm font-medium text-black dark:text-white" htmlFor="dataInicial">
-              Fecha de Creación
-            </label>
-            <div className="relative">
-              <div className="w-full rounded border border-stroke bg-gray py-1 px-2 text-base text-black whitespace-pre-wrap break-words focus:border-primary focus-visible:outline-none dark:border-strokedark dark:bg-meta-4 dark:text-white dark:focus:border-primary overflow-y-auto max-h-24">
-                {formatDate(order.dataInicial)}
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className="mb-2 flex flex-col gap-1">
-          <div className="w-full">
-            <label className="mb-1 block text-sm font-medium text-black dark:text-white" htmlFor="dataFinal">
-              Fecha Final
-            </label>
-            <div className="relative">
-              <div className="w-full rounded border border-stroke bg-gray py-1 px-2 text-base text-black whitespace-pre-wrap break-words focus:border-primary focus-visible:outline-none dark:border-strokedark dark:bg-meta-4 dark:text-white dark:focus:border-primary overflow-y-auto max-h-24">
-                {formatDate(order.dataFinal)}
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className="mb-2 flex flex-col gap-1">
-          <div className="w-full">
-            <label className="mb-1 block text-sm font-medium text-black dark:text-white" htmlFor="dataAtualizacao">
-              Fecha de Actualización
-            </label>
-            <div className="relative">
-              <div className="w-full rounded border border-stroke bg-gray py-1 px-2 text-base text-black whitespace-pre-wrap break-words focus:border-primary focus-visible:outline-none dark:border-strokedark dark:bg-meta-4 dark:text-white dark:focus:border-primary overflow-y-auto max-h-24">
-                {formatDate(order.dataAtualizacao)}
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className="mb-2 flex flex-col gap-1">
-          <div className="w-full">
-            <label className="mb-1 block text-sm font-medium text-black dark:text-white" htmlFor="garantia">
-              Garantía
-            </label>
-            <div className="relative">
-              <div className="w-full rounded border border-stroke bg-gray py-1 px-2 text-base text-black whitespace-pre-wrap break-words focus:border-primary focus-visible:outline-none dark:border-strokedark dark:bg-meta-4 dark:text-white dark:focus:border-primary overflow-y-auto max-h-24">
-                {order.garantia || 'Sin información'}
-              </div>
-            </div>
-          </div>
-        </div>
-      </div> */}
+
     </>
   );
 };
