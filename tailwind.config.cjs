@@ -44,6 +44,9 @@ module.exports = {
       success: '#219653',
       danger: '#D34053',
       warning: '#FFA70B',
+      cyan: '#3b82f6',
+      blue: '#2563EB',
+      'blue-2': '#3b82f6',
     },
     screens: {
       '2xsm': '375px',
