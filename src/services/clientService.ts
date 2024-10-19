@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import axios from 'axios';
 
 interface ClientData {
   idClientes: number;
@@ -37,28 +38,22 @@ export const useClientData = (clientId?: string) => {
       const effectiveClientId = clientId || storedClientId;
  
       if (!effectiveClientId) {
-        setError('No client ID available');
+        setError('Cliente no disponible');
         setLoading(false);
         return;
       }
 
       try {
- 
-        const response = await fetch(`https://api.taller.digicom.com.gt/api/v1/clientes/${effectiveClientId}`, {
+        const response = await axios.get(`https://api.taller.digicom.com.gt/api/v1/clientes/${effectiveClientId}`, {
           headers: {
             'Authorization': `Bearer ${token}`
           }
         });
 
-        if (!response.ok) {
-          throw new Error('Failed to fetch client data');
-        }
-
-        const data = await response.json();
-        const { ordensServicos, ...clientInfo } = data.result;
+        const { ordensServicos, ...clientInfo } = response.data.result;
         setClientData(clientInfo);
       } catch (err) {
-        setError(err instanceof Error ? err.message : 'An error occurred');
+        setError(err instanceof Error ? err.message : 'A ocurrido un error');
       } finally {
         setLoading(false);
       }

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import LogoDark from '../../images/logo/logo-dark.svg';
 import Logo from '../../images/logo/logo.svg';
-
+import { login } from '../../services/authService';
 
 const SignIn = () => {
   const [email, setEmail] = useState('');
@@ -11,39 +11,23 @@ const SignIn = () => {
   const navigate = useNavigate();
 
   const handleLogin = async (e: React.FormEvent) => {
-    e.preventDefault();  // Prevenir el comportamiento por defecto del formulario
-
-    const loginData = {
-      email: email,
-      password: password,
-    };
+    e.preventDefault();
 
     try {
-      const response = await fetch('https://api.taller.digicom.com.gt/api/v1/clientes/login', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(loginData),
-      });
-
-      const data = await response.json();
-
-      if (!response.ok) {
-        throw new Error(data.message || 'Error al iniciar sesión');
-      }
+      const { data, statusCode } = await login({ email, password });
 
       // Guardar el JWT y los datos del cliente en localStorage
       localStorage.setItem('jwt', data.token);
-      localStorage.setItem('clientId', data.cliente.id);
+      localStorage.setItem('clientId', data.cliente.id.toString());
       localStorage.setItem('clientEmail', data.cliente.email);
       localStorage.setItem('clientRole', data.cliente.rol);
 
-      window.location.href = '/ordenes';
-      //navigate('/ordenes');  // Redirigir al usuario a la página de órdenes o dashboard
+      // Mostrar el código de estado HTTP en la consola
+      console.log('Código de estado HTTP:', statusCode);
 
+      window.location.href = '/ordenes';
     } catch (error: any) {
-      setError(error.message);
+      setError(error.message || 'Error al iniciar sesión');
     }
   };
 

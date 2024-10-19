@@ -3,17 +3,13 @@ import Breadcrumb from '../components/Breadcrumb';
 import fondo2 from '../images/cover/fondo2.png';
 import userDefault from '../images/user/perfildefault.png';
 import { useClientData } from '../services/clientService';
-import AlertDispley from '../components/AlertDispley';
+ 
 
 const Perfil: React.FC = () => {
   const { clientData, loading, error } = useClientData();
-  const [showAlert, setShowAlert] = useState(false);
+ 
 
-  const toggleAlert = () => {
-    setShowAlert(!showAlert);
-  };
-
-  if (loading) return <div>Cargando...</div>;
+   if (loading) return <div>Cargando...</div>;
   if (error) return <div>Error: {error}</div>;
   if (!clientData) return <div>Informacion no encontrada</div>;
 
@@ -67,9 +63,23 @@ const Perfil: React.FC = () => {
           <div>
             <label className="mb-3 block text-black dark:text-white">Dirección</label>
             <div className="w-full rounded-lg border-[1.5px] border-stroke bg-gray-100 py-3 px-5 font-medium outline-none dark:bg-form-input dark:border-form-strokedark">
-              {`${clientData.rua || ''} ${clientData.numero || ''}, ${clientData.bairro || ''}, ${clientData.cidade || ''}, ${clientData.estado || ''}, ${clientData.cep || ''}`.trim() || 'No especificado'}
+              <p>Calle: {clientData.rua || 'No especificado'}</p>
+              <p>Número: {clientData.numero || 'No especificado'}</p>
+              <p>Barrio: {clientData.bairro || 'No especificado'}</p>
+              <p>Ciudad: {clientData.cidade || 'No especificado'}</p>
+              <p>Estado: {clientData.estado || 'No especificado'}</p>
+              <p>Código Postal: {clientData.cep || 'No especificado'}</p>
             </div>
           </div>
+
+          <div>
+            <label className="mb-3 block text-black dark:text-white">Nombre del Contacto</label>
+            <div className="w-full rounded-lg border-[1.5px] border-stroke bg-gray-100 py-3 px-5 font-medium outline-none dark:bg-form-input dark:border-form-strokedark">
+              {clientData.contato || 'No especificado'}
+            </div>
+          </div>
+
+          
         </div>
       </div>
     </>

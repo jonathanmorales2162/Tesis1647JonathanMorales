@@ -33,7 +33,6 @@ export const useOrderData = (clientId?: string) => {
 
       const token = localStorage.getItem('jwt');
       const storedClientId = localStorage.getItem('clientId');
-      //const effectiveClientId = 36;
       const effectiveClientId = clientId || storedClientId;
 
       if (!effectiveClientId) {
@@ -73,7 +72,7 @@ export const getOrderById = async (orderId: number): Promise<Order> => {
   const token = localStorage.getItem('jwt');
 
   if (!token) {
-    throw new Error('Token de autoenticación no valido');
+    throw new Error('Token de autenticación no valido');
   }
 
   try {
