@@ -39,8 +39,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
   const handleContactClick = () => {
     window.open('https://wa.me/50241010503?text=Quiero%20más%20información.', '_blank');
   };
-
-  // close if the esc key is pressed
+ 
   useEffect(() => {
     const keyHandler = ({ keyCode }: KeyboardEvent) => {
       if (!sidebarOpen || keyCode !== 27) return;
@@ -127,7 +126,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
           </div>
         </nav>
 
-        {/* Botón Conócenos al final */}
+ 
         <div className="p-4">
         <button
             onClick={handleContactClick}

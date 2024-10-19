@@ -13,7 +13,7 @@ const DropdownUser = () => {
   const trigger = useRef<any>(null);
   const dropdown = useRef<any>(null);
 
-  // close on click outside
+
   useEffect(() => {
     const clickHandler = ({ target }: MouseEvent) => {
       if (!dropdown.current) return;
@@ -29,7 +29,6 @@ const DropdownUser = () => {
     return () => document.removeEventListener('click', clickHandler);
   });
 
-  // close if the esc key is pressed
   useEffect(() => {
     const keyHandler = ({ keyCode }: KeyboardEvent) => {
       if (!dropdownOpen || keyCode !== 27) return;
@@ -40,14 +39,13 @@ const DropdownUser = () => {
   });
 
   const handleLogout = () => {
-    // Elimina los datos del localStorage
+    // Elimina los datos del localStorage al cerrar sesión
     localStorage.removeItem('jwt');
     localStorage.removeItem('clientId');
     localStorage.removeItem('clientEmail');
     localStorage.removeItem('clientRole');
 
-    // Redirige al componente de Login
-    navigate('/login');
+    navigate('/login'); // Redirige al componente de Login
   };
 
   return (
@@ -58,13 +56,6 @@ const DropdownUser = () => {
         className="flex items-center gap-4"
         to="#"
       >
-        {/* <span className="hidden text-right lg:block">
-          <span className="block text-sm font-medium text-black dark:text-white">
-            Usuario aqui
-          </span>
-          
-        </span> */}
-
         <span className="h-12 w-12 rounded-full bg-gray-200 flex items-center justify-center">
            
            <FontAwesomeIcon icon={faUser} className="h-6 w-6 text-gray-500" />
@@ -89,7 +80,7 @@ const DropdownUser = () => {
         </svg>
       </Link>
 
-      {/* <!-- Dropdown Start --> */}
+
       <div
         ref={dropdown}
         onFocus={() => setDropdownOpen(true)}
@@ -149,7 +140,7 @@ const DropdownUser = () => {
           Cerrar sesión 
         </button>
       </div>
-      {/* <!-- Dropdown End --> */}
+
     </div>
   );
 };

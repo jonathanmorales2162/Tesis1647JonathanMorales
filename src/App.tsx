@@ -69,7 +69,7 @@ function App() {
               })}
             </>
           ) : (
-            // Si no está autenticado, redirigir a SignIn
+            // Si no está autenticado, redirigir a login
             <Route path="*" element={<Navigate to="/login" replace />} />
           )}
         </Route>
